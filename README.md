@@ -1,5 +1,21 @@
 # lambda-pytorch
 
+## Tutorial
+1. Run sam build 
+2. sam deploy –-guided --stack-name lambda-pytorch
+3. Choose the same Region that you created the Amazon ECR repository in. (`us-east-2`)
+4. Enter the image repository (`repositoryUri`) for the function (Amazon ECR repository)
+5. For Confirm changes before deploy and Allow SAM CLI IAM role creation, keep the defaults
+6. For pytorchEndpoint may not have authorization defined, Is this okay?, select y.
+7. Keep the defaults for the remaining prompts.
+8. Test the API: 
+```bash
+curl --header "Content-Type: application/json" --request POST --data '{"sentence": "Bonjour Pierre."}' <API_GATEWAY_URL>
+```
+
+
+---
+
 This project contains source code and supporting files for a serverless application for classifying handwritten digits using a Machine Learning model in [PyTorch](https://pytorch.org/). It includes the following files and folders:
 
 - app/app.py - Code for the application's Lambda function including the code for ML inferencing.

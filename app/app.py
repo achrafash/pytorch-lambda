@@ -17,6 +17,6 @@ def lambda_handler(event, context):
         'body': json.dumps({
                 'fr': sentence, 
                 'en': translated_sentence,
-                'duration': end_time - start_time        
+                'duration': end_time - start_time
         })
     }

@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "lambda-pytorch"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-jxt9ptc8y2ln"
+s3_prefix = "lambda-pytorch"
+region = "us-east-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["InferenceFunction=244065003269.dkr.ecr.us-east-2.amazonaws.com/lambda-pytorch"]

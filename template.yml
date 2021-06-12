@@ -5,12 +5,6 @@ Globals:
   Function:
     Timeout: 300
     MemorySize: 5000
-  Api:
-    # change this part for text
-    BinaryMediaTypes:
-      - image/png
-      - image/jpg
-      - image/jpeg
 
 Resources:
   InferenceFunction:
@@ -23,7 +17,6 @@ Resources:
           Properties:
             Path: /translate # /classify_digit
             Method: post
-            TimeoutInMillis: 29000
     Metadata:
       Dockerfile: Dockerfile
       DockerContext: ./app
@@ -35,10 +28,10 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   InferenceApi:
     Description: "API Gateway endpoint URL for Prod stage for Inference function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/translate/" # /classify_digit/
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/translate/"
   InferenceFunction:
     Description: "Inference Lambda Function ARN"
-  InferenceFunctionIamRole:
     Value: !GetAtt InferenceFunction.Arn
+  InferenceFunctionIamRole:
     Description: "Implicit IAM Role created for Inference function"
     Value: !GetAtt InferenceFunction.Arn
