@@ -1,7 +1,7 @@
 import time
 import json
 
-from .model import translate
+from model import translate
 
 
 def lambda_handler(event, context):

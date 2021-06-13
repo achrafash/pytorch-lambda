@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from torchtext.data.utils import get_tokenizer
 from typing import Tuple
 from torch import Tensor
-from .data import get_filepaths, build_vocab
+from data import get_filepaths, build_vocab
 
 
 class Encoder(nn.Module):
@@ -188,9 +188,9 @@ def translate(sentence: str) -> str:
     en_tokenizer = get_tokenizer('spacy', language='en')
 
     try:
-        with open("./en_vocab.pkl", "rb") as f:
+        with open("/opt/ml/en_vocab.pkl", "rb") as f:
             en_vocab = pickle.load(f)
-        with open("./fr_vocab.pkl", "wb") as f:
+        with open("/opt/ml/fr_vocab.pkl", "wb") as f:
             fr_vocab = pickle.load(f)
     except:
         train_filepahts, _, _ = get_filepaths()
