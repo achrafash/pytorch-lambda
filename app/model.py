@@ -9,7 +9,6 @@ import torch.nn.functional as F
 from torchtext.data.utils import get_tokenizer
 from typing import Tuple
 from torch import Tensor
-from data import get_filepaths, build_vocab
 
 
 class Encoder(nn.Module):
@@ -182,20 +181,16 @@ def translate(sentence: str) -> str:
     """
     start_time = time.time()
     MAX_LEN = 25
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cpu')
 
     fr_tokenizer = get_tokenizer('spacy', language='fr')
-    en_tokenizer = get_tokenizer('spacy', language='en')
+    # en_tokenizer = get_tokenizer('spacy', language='en')
 
-    try:
-        with open("/opt/ml/en_vocab.pkl", "rb") as f:
-            en_vocab = pickle.load(f)
-        with open("/opt/ml/fr_vocab.pkl", "wb") as f:
-            fr_vocab = pickle.load(f)
-    except:
-        train_filepahts, _, _ = get_filepaths()
-        fr_vocab = build_vocab(train_filepahts[0], fr_tokenizer)
-        en_vocab = build_vocab(train_filepahts[1], en_tokenizer)
+    with open("/opt/ml/en_vocab.pkl", "rb") as f:
+        en_vocab = pickle.load(f)
+    with open("/opt/ml/fr_vocab.pkl", "rb") as f:
+        fr_vocab = pickle.load(f)
+    
 
     tokens = fr_tokenizer(sentence)
     x = torch.tensor([fr_vocab.stoi[word] for word in tokens])
