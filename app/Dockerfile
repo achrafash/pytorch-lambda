@@ -1,5 +1,4 @@
-# FROM public.ecr.aws/lambda/python:3.8
-FROM public.ecr.aws/bitnami/pytorch:latest
+FROM public.ecr.aws/lambda/python:3.8
 
 COPY app.py model.py requirements.txt ./
 COPY model /opt/ml/model

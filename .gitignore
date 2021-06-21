@@ -2,7 +2,8 @@
 model
 *.pkl
 
-
+.aws-sam
+*.toml
 ### Linux ###
 *~
 

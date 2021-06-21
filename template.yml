@@ -11,11 +11,6 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       PackageType: Image
-      LifecycleConfiguration:
-        Rules:
-          Id: DeleteContentAfter4Days
-          Status: 'Enabled'
-          ExpirationInDays: 4
       Events:
         Inference:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -26,6 +21,11 @@ Resources:
       Dockerfile: Dockerfile
       DockerContext: ./app
       DockerTag: python3.8-v1
+      LifecycleConfiguration:
+        Rules:
+          Id: DeleteContentAfter1Day
+          Status: 'Enabled'
+          ExpirationInDays: 1
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
