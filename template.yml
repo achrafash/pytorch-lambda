@@ -21,11 +21,6 @@ Resources:
       Dockerfile: Dockerfile
       DockerContext: ./app
       DockerTag: python3.8-v1
-      LifecycleConfiguration:
-        Rules:
-          Id: DeleteContentAfter1Day
-          Status: 'Enabled'
-          ExpirationInDays: 1
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
