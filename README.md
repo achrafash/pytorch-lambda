@@ -2,7 +2,7 @@
 
 ## Tutorial
 1. Run sam build 
-2. sam deploy –-guided --stack-name lambda-pytorch
+2. sam deploy --guided --stack-name lambda-pytorch
 3. Choose the same Region that you created the Amazon ECR repository in. (`us-east-2`)
 4. Enter the image repository (`repositoryUri`) for the function (Amazon ECR repository)
 5. For Confirm changes before deploy and Allow SAM CLI IAM role creation, keep the defaults
